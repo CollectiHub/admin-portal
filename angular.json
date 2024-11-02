@@ -53,10 +53,19 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
+            "local": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/app/tools/interceptors-registry/interceptor-registry.constants.ts",
+                  "with": "src/app/tools/interceptors-registry/interceptor-registry.local.constants.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -67,8 +76,8 @@
             "production": {
               "buildTarget": "card-app-admin:build:production"
             },
-            "development": {
-              "buildTarget": "card-app-admin:build:development"
+            "local": {
+              "buildTarget": "card-app-admin:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -97,8 +106,29 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
+    }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "standalone": true,
+      "changeDetection": "OnPush",
+      "style": "scss"
     }
   }
 }

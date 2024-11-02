@@ -19,9 +19,11 @@ log.txt
 
 # Compiled output
 /dist
+/pkg-build
 /tmp
 /out-tsc
 /bazel-out
+/pkg-build
 
 # Node
 /node_modules

@@ -4,10 +4,16 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -c=local",
     "build": "ng build",
+    "build:prod": "pnpm run build -c=production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prettier:fix": "prettier --write \"src/**/*.{html,scss}\" & prettier --write \"**/*.json\"",
+    "prettier:check": "prettier --check \"src/**/*.{html,scss}\"",
+    "lint:fix-ts-html": "ng lint --fix",
+    "lint:check-ts-html": "ng lint",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
